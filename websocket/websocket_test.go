@@ -131,7 +131,7 @@ func startServer() {
 }
 
 func newConfig(t *testing.T, path string) *Config {
-	config, _ := NewConfig(fmt.Sprintf("ws://%s%s", serverAddr, path), "http://localhost")
+	config, _ := NewConfig(fmt.Sprintf("ws://%s%s", serverAddr, path), "http://localhost", "")
 	return config
 }
 

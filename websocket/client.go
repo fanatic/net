@@ -24,7 +24,7 @@ func (e *DialError) Error() string {
 }
 
 // NewConfig creates a new WebSocket config for client connection.
-func NewConfig(server, origin string) (config *Config, err error) {
+func NewConfig(server, origin, host string) (config *Config, err error) {
 	config = new(Config)
 	config.Version = ProtocolVersionHybi13
 	config.Location, err = url.ParseRequestURI(server)
@@ -36,6 +36,7 @@ func NewConfig(server, origin string) (config *Config, err error) {
 		return
 	}
 	config.Header = http.Header(make(map[string][]string))
+	config.HostOverride = host
 	return
 }
 
@@ -53,8 +54,8 @@ func NewClient(config *Config, rwc io.ReadWriteCloser) (ws *Conn, err error) {
 }
 
 // Dial opens a new client connection to a WebSocket.
-func Dial(url_, protocol, origin string) (ws *Conn, err error) {
-	config, err := NewConfig(url_, origin)
+func Dial(url_, protocol, origin, host string) (ws *Conn, err error) {
+	config, err := NewConfig(url_, origin, host)
 	if err != nil {
 		return nil, err
 	}

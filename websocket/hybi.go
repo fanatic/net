@@ -411,7 +411,7 @@ func hybiClientHandshake(config *Config, br *bufio.Reader, bw *bufio.Writer) (er
 	// According to RFC 6874, an HTTP client, proxy, or other
 	// intermediary must remove any IPv6 zone identifier attached
 	// to an outgoing URI.
-	bw.WriteString("Host: " + removeZone(config.Location.Host) + "\r\n")
+	bw.WriteString("Host: " + removeZone(config.HostOverride) + "\r\n")
 	bw.WriteString("Upgrade: websocket\r\n")
 	bw.WriteString("Connection: Upgrade\r\n")
 	nonce := generateNonce()

@@ -8,14 +8,14 @@ import (
 	"fmt"
 	"log"
 
-	"golang.org/x/net/websocket"
+	"github.com/fanatic/net/websocket"
 )
 
 // This example demonstrates a trivial client.
 func ExampleDial() {
 	origin := "http://localhost/"
 	url := "ws://localhost:12345/ws"
-	ws, err := websocket.Dial(url, "", origin)
+	ws, err := websocket.Dial(url, "", origin, "")
 	if err != nil {
 		log.Fatal(err)
 	}

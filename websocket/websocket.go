@@ -4,7 +4,7 @@
 
 // Package websocket implements a client and server for the WebSocket protocol
 // as specified in RFC 6455.
-package websocket // import "golang.org/x/net/websocket"
+package websocket // import "github.com/fanatic/net/websocket"
 
 import (
 	"bufio"
@@ -87,6 +87,8 @@ type Config struct {
 	Header http.Header
 
 	handshakeData map[string]string
+
+	HostOverride string
 }
 
 // serverHandshaker is an interface to handle WebSocket server side handshake.
